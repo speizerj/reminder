@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
-import {base, firebaseUtils} from '../utils/firebaseUtils';
+import fb from '../utils/firebaseUtils';
 
 export class Logout extends Component {
   componentDidMount() {
-    base.unauth();
+    fb.unauth();
     browserHistory.push('/');
   }
   render() {

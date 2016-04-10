@@ -2,7 +2,7 @@ import fb from './firebaseUtils';
 
 
 function requireAuth(nextState, replace) {
-  if (!fb.isLoggedIn()) {
+  if (!fb.getAuth()) {
     replace({
       pathname: '/',
       state: { nextPathname: nextState.location.pathname }
@@ -11,7 +11,7 @@ function requireAuth(nextState, replace) {
 }
 
 function requireNonAuth(nextState, replace) {
-    if (fb.isLoggedIn()) {
+    if (fb.getAuth()) {
       let auth = fb.base.getAuth();
       replace({
         pathname: '/dashboard',

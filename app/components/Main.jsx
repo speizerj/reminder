@@ -7,12 +7,14 @@ export class Main extends Component {
     return (
       <div className="main-container">
         <nav className="navbar navbar-default" role="navigation">
-          <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
-            <h1>Reminder</h1>
-          </div>
-          {fb.isLoggedIn() ? (
+          <div className="container">
+            <h1>Reminder app</h1>
+          {fb.getAuth() ? (
+            <div className="pull-right">
               <Link to="/logout">Log out</Link>
+            </div>
             ) : ''}
+          </div>
         </nav>
         <div className="container">
           {this.props.children}

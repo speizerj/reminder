@@ -1,0 +1,9 @@
+textarea {
+  resize: vertical;
+}
+
+.reminder__delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

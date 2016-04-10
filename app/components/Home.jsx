@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
-import {fb} from '../utils/firebaseUtils';
+import fb from '../utils/firebaseUtils';
 
 export class Home extends Component {
   constructor() {
@@ -13,7 +13,7 @@ export class Home extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    fb.base.authWithPassword({
+    fb.authWithPassword({
       email: this.email.value,
       password: this.password.value
     }, function(err, data) {
@@ -21,7 +21,7 @@ export class Home extends Component {
         browserHistory.push('/dashboard');
       } else {
         this.setState({
-          error: firebaseUtils.genErrorMsg(err)
+          error: fb.genErrorMsg(err)
         })
       }
     }.bind(this));
