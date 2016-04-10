@@ -1,7 +1,8 @@
-import {base, firebaseUtils} from './firebaseUtils';
+import fb from './firebaseUtils';
+
 
 function requireAuth(nextState, replace) {
-  if (!firebaseUtils.isLoggedIn()) {
+  if (!fb.isLoggedIn()) {
     replace({
       pathname: '/',
       state: { nextPathname: nextState.location.pathname }
@@ -10,13 +11,14 @@ function requireAuth(nextState, replace) {
 }
 
 function requireNonAuth(nextState, replace) {
-    if (firebaseUtils.isLoggedIn()) {
-      let auth = base.getAuth();
+    if (fb.isLoggedIn()) {
+      let auth = fb.base.getAuth();
       replace({
-        pathname: '/user/' + auth.uid,
+        pathname: '/dashboard',
         state: { nextPathname: nextState.location.pathname }
       })
     }
 }
+
 
 module.exports = {requireAuth, requireNonAuth};
